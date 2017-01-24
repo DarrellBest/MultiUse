@@ -30,7 +30,8 @@ public class RestartCommand extends CommandExtender implements CommandInterface 
 		for (Player player : players) {
 			player.kickPlayer("Restarting: Please wait 60 seconds before reconnecting.");
 		}
-		doCommand("restart");
+		// if sh is set up correctly, stopping the server will restart it
+		doCommand("stop");
 	}
 
 	@Override
