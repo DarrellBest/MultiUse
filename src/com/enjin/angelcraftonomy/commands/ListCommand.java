@@ -31,10 +31,10 @@ public class ListCommand extends CommandExtender implements CommandInterface {
 	public void run() {
 		messages.add("---------------- MultiUse v1.0 ----------------");
 		messages.add("Created and Designed by UsuriousAngel");
+		messages.add(" /" + getCommand().getName() + " author : " + colorOne
+				+ "Displays the author");
 		messages.add(" /" + getCommand().getName() + " list : " + colorOne
 				+ "Shows the commands");
-		messages.add(" /" + getCommand().getName() + " version : " + colorOne
-				+ "Shows the current version");
 		messages.add(" /" + getCommand().getName() + " clear : " + colorOne
 				+ "Clears your chat");
 		messages.add(" /" + getCommand().getName() + " potion : " + colorOne
@@ -49,8 +49,6 @@ public class ListCommand extends CommandExtender implements CommandInterface {
 				+ "Reloads the plugin");
 		messages.add(" /" + getCommand().getName() + " restart : " + colorOne
 				+ "Kicks all players and restarts");
-		messages.add(" /" + getCommand().getName() + " author : " + colorOne
-				+ "Displays the author");
 		messages.add(" /" + getCommand().getName() + " hello : " + colorOne
 				+ "Tests to see if the plugin is working");
 		messages.add(" /" + getCommand().getName() + " console: " + colorOne
@@ -58,7 +56,9 @@ public class ListCommand extends CommandExtender implements CommandInterface {
 		messages.add(" /" + getCommand().getName() + " gamemode: " + colorOne
 				+ "Changes your gamemode");
 		messages.add(" /" + getCommand().getName() + " aution : " + colorOne
-				+ "Shows the commands");
+				+ "Easter egg command");
+		messages.add(" /" + getCommand().getName() + " version : " + colorOne
+				+ "Shows the current version");
 		messages.add("--------------------------------------------");
 		sendMessage(messages);
 	}
