@@ -23,11 +23,13 @@ public class PotionCommand extends CommandExtender implements CommandInterface {
 	// this is usually set from 1-10 depending on the effect
 	private int intensity;
 	private PotionEffectType potionEffectType;
+	private Command command;
 	private int TICKS_PER_MINUTE = 1200;
 
 	public PotionCommand(MultiUseCore multiuse, CommandSender sender,
 			Command command, String label, String[] args) {
 		super(multiuse, sender, command, label, args);
+		this.command = command;
 	}
 
 	@Override
@@ -61,94 +63,99 @@ public class PotionCommand extends CommandExtender implements CommandInterface {
 		}
 
 		// set specific potion effect type
-		switch (getArgs()[1].toLowerCase()) {
-		case ("speed"):
-			potionEffectType = PotionEffectType.SPEED;
-			break;
-		case ("slowness"):
-			potionEffectType = PotionEffectType.SLOW;
-			break;
-		case ("haste"):
-			potionEffectType = PotionEffectType.FAST_DIGGING;
-			break;
-		case ("miningfatigue"):
-			potionEffectType = PotionEffectType.SLOW_DIGGING;
-			break;
-		case ("strength"):
-			potionEffectType = PotionEffectType.INCREASE_DAMAGE;
-			break;
-		case ("health"):
-			potionEffectType = PotionEffectType.HEAL;
-			break;
-		case ("damage"):
-			potionEffectType = PotionEffectType.HARM;
-			break;
-		case ("jumpboost"):
-			potionEffectType = PotionEffectType.JUMP;
-			break;
-		case ("nausea"):
-			potionEffectType = PotionEffectType.CONFUSION;
-			break;
-		case ("regeneration"):
-			potionEffectType = PotionEffectType.REGENERATION;
-			break;
-		case ("resistance"):
-			potionEffectType = PotionEffectType.DAMAGE_RESISTANCE;
-			break;
-		case ("fireresistance"):
-			potionEffectType = PotionEffectType.FIRE_RESISTANCE;
-			break;
-		case ("waterbreathing"):
-			potionEffectType = PotionEffectType.WATER_BREATHING;
-			break;
-		case ("invisibilty"):
-			potionEffectType = PotionEffectType.INVISIBILITY;
-			break;
-		case ("blindness"):
-			potionEffectType = PotionEffectType.BLINDNESS;
-			break;
-		case ("nightvision"):
-			potionEffectType = PotionEffectType.NIGHT_VISION;
-			break;
-		case ("hunger"):
-			potionEffectType = PotionEffectType.HUNGER;
-			break;
-		case ("weakness"):
-			potionEffectType = PotionEffectType.WEAKNESS;
-			break;
-		case ("wither"):
-			potionEffectType = PotionEffectType.WITHER;
-			break;
-		case ("healthboost"):
-			potionEffectType = PotionEffectType.HEALTH_BOOST;
-			break;
-		case ("absorption"):
-			potionEffectType = PotionEffectType.ABSORPTION;
-			break;
-		case ("saturation"):
-			potionEffectType = PotionEffectType.SATURATION;
-			break;
-		case ("glowing"):
-			potionEffectType = PotionEffectType.GLOWING;
-			break;
-		case ("levitation"):
-			potionEffectType = PotionEffectType.LEVITATION;
-			break;
-		case ("luck"):
-			potionEffectType = PotionEffectType.LUCK;
-			break;
-		case ("badluck"):
-			potionEffectType = PotionEffectType.UNLUCK;
-			break;
-		}
+		if (getArgs().length >= 2)
+			switch (getArgs()[1].toLowerCase()) {
+			case ("speed"):
+				potionEffectType = PotionEffectType.SPEED;
+				break;
+			case ("slowness"):
+				potionEffectType = PotionEffectType.SLOW;
+				break;
+			case ("haste"):
+				potionEffectType = PotionEffectType.FAST_DIGGING;
+				break;
+			case ("miningfatigue"):
+				potionEffectType = PotionEffectType.SLOW_DIGGING;
+				break;
+			case ("strength"):
+				potionEffectType = PotionEffectType.INCREASE_DAMAGE;
+				break;
+			case ("health"):
+				potionEffectType = PotionEffectType.HEAL;
+				break;
+			case ("damage"):
+				potionEffectType = PotionEffectType.HARM;
+				break;
+			case ("jumpboost"):
+				potionEffectType = PotionEffectType.JUMP;
+				break;
+			case ("nausea"):
+				potionEffectType = PotionEffectType.CONFUSION;
+				break;
+			case ("regeneration"):
+				potionEffectType = PotionEffectType.REGENERATION;
+				break;
+			case ("resistance"):
+				potionEffectType = PotionEffectType.DAMAGE_RESISTANCE;
+				break;
+			case ("fireresistance"):
+				potionEffectType = PotionEffectType.FIRE_RESISTANCE;
+				break;
+			case ("waterbreathing"):
+				potionEffectType = PotionEffectType.WATER_BREATHING;
+				break;
+			case ("invisibilty"):
+				potionEffectType = PotionEffectType.INVISIBILITY;
+				break;
+			case ("blindness"):
+				potionEffectType = PotionEffectType.BLINDNESS;
+				break;
+			case ("nightvision"):
+				potionEffectType = PotionEffectType.NIGHT_VISION;
+				break;
+			case ("hunger"):
+				potionEffectType = PotionEffectType.HUNGER;
+				break;
+			case ("weakness"):
+				potionEffectType = PotionEffectType.WEAKNESS;
+				break;
+			case ("wither"):
+				potionEffectType = PotionEffectType.WITHER;
+				break;
+			case ("healthboost"):
+				potionEffectType = PotionEffectType.HEALTH_BOOST;
+				break;
+			case ("absorption"):
+				potionEffectType = PotionEffectType.ABSORPTION;
+				break;
+			case ("saturation"):
+				potionEffectType = PotionEffectType.SATURATION;
+				break;
+			case ("glowing"):
+				potionEffectType = PotionEffectType.GLOWING;
+				break;
+			case ("levitation"):
+				potionEffectType = PotionEffectType.LEVITATION;
+				break;
+			case ("luck"):
+				potionEffectType = PotionEffectType.LUCK;
+				break;
+			case ("badluck"):
+				potionEffectType = PotionEffectType.UNLUCK;
+				break;
+			}
 	}
 
 	@Override
 	public void run() {
 
 		if (getArgs().length <= 1) {
-			sendMessage("/MultiUse Potion [EFFECT] <SELF/ALL/OTHER> <MINUTES> <INTENSITY>");
-			sendMessage("Potion effects include: Speed, Slowness, Haste, MiningFatigue, Strength, Health, Damage, JumpBoost, Nausea, Regeneration, Resistance, FireResistance, WaterBreathing, Invisibility, Blindness, Nightvision, Hunger, Weakness, Wither, HealthBoost, Absorption, Saturation, Glowing, Levitation, Luck, Badluck.");
+			sendMessage("/MultiUse Potion [EFFECT] <SELF/ALL/OTHER> <MINUTES> <INTENSITY>"
+					+ "Potion effects include: Speed, Slowness, Haste, MiningFatigue,"
+					+ " Strength, Health, Damage, JumpBoost, Nausea, Regeneration, "
+					+ "Resistance, FireResistance, WaterBreathing, Invisibility, "
+					+ "Blindness, Nightvision, Hunger, Weakness, Wither, HealthBoost,"
+					+ " Absorption, Saturation, Glowing, Levitation, Luck, Badluck.");
 			return;
 
 		} else {

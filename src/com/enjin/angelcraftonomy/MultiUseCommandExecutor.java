@@ -118,8 +118,6 @@ public class MultiUseCommandExecutor implements CommandExecutor {
 
 			// force two players to ignore eachother
 
-			// give all payers an effect
-
 			// set game mode
 			if (args.length > 1 && args[0].toLowerCase().equals("gamemode")
 					|| args.length > 1 && args[0].toLowerCase().equals("gm")) {
