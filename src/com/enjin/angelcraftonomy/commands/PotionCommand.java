@@ -23,13 +23,11 @@ public class PotionCommand extends CommandExtender implements CommandInterface {
 	// this is usually set from 1-10 depending on the effect
 	private int intensity;
 	private PotionEffectType potionEffectType;
-	private Command command;
 	private int TICKS_PER_MINUTE = 1200;
 
 	public PotionCommand(MultiUseCore multiuse, CommandSender sender,
 			Command command, String label, String[] args) {
 		super(multiuse, sender, command, label, args);
-		this.command = command;
 	}
 
 	@Override
@@ -45,7 +43,7 @@ public class PotionCommand extends CommandExtender implements CommandInterface {
 		potionEffectType = PotionEffectType.SPEED;
 
 		// set range if specified otherwise
-		if (getArgs().length == 3) {
+		if (getArgs().length >= 3) {
 			if (getArgs()[2].toLowerCase().equals("all"))
 				effectRange = 1;
 			if (getArgs()[2].toLowerCase().equals("others"))
@@ -53,12 +51,12 @@ public class PotionCommand extends CommandExtender implements CommandInterface {
 		}
 
 		// set time in minutes if specified
-		if (getArgs().length == 4) {
+		if (getArgs().length >= 4) {
 			timeMinutes = Integer.parseInt(getArgs()[3]) * TICKS_PER_MINUTE;
 		}
 
 		// set intensity if specified
-		if (getArgs().length == 5) {
+		if (getArgs().length >= 5) {
 			intensity = Integer.parseInt(getArgs()[4]);
 		}
 
@@ -150,8 +148,9 @@ public class PotionCommand extends CommandExtender implements CommandInterface {
 	public void run() {
 
 		if (getArgs().length <= 1) {
-			sendMessage("/MultiUse Potion [EFFECT] <SELF/ALL/OTHER> <MINUTES> <INTENSITY>"
-					+ "Potion effects include: Speed, Slowness, Haste, MiningFatigue,"
+			sendMessage("/MultiUse Potion [EFFECT] <SELF/ALL/OTHERS> <MINUTES> <INTENSITY>"
+					+ "                                            \n"
+					+ "Potion Effects: Speed, Slowness, Haste, MiningFatigue,"
 					+ " Strength, Health, Damage, JumpBoost, Nausea, Regeneration, "
 					+ "Resistance, FireResistance, WaterBreathing, Invisibility, "
 					+ "Blindness, Nightvision, Hunger, Weakness, Wither, HealthBoost,"
@@ -187,14 +186,11 @@ public class PotionCommand extends CommandExtender implements CommandInterface {
 				players.remove(getPlayer());
 
 			for (Player player : players) {
-				sendMessage(
-						"You have been effected with " + potionEffect.getType(),
-						player);
-				sendMessage("for "
+				sendMessage("You have recieved "
+						+ potionEffect.getType().getName() + " for "
 						+ (potionEffect.getDuration() / TICKS_PER_MINUTE)
-						+ " minutes", player);
-				sendMessage("by " + ChatColor.GOLD + getPlayer().getName(),
-						player);
+						+ " minutes" + " from " + ChatColor.GOLD
+						+ getPlayer().getName(), player);
 				player.addPotionEffect(potionEffect, true);
 			}
 		}
