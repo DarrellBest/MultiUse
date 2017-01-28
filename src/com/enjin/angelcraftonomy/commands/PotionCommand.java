@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -176,7 +177,10 @@ public class PotionCommand extends CommandExtender implements CommandInterface {
 
 	private void applyPotionEffect(int effectRange, PotionEffect potionEffect) {
 		// 0 = self, 1 = all, 2 = others
-		if (effectRange == 0) {
+		if (sender instanceof ConsoleCommandSender) {
+			applyPotionEffect(players, potionEffect);
+
+		} else if (effectRange == 0) {
 			getPlayer().addPotionEffect(potionEffect, true);
 
 		} else {
@@ -185,14 +189,18 @@ public class PotionCommand extends CommandExtender implements CommandInterface {
 			if (effectRange == 2)
 				players.remove(getPlayer());
 
-			for (Player player : players) {
-				sendMessage("You have recieved "
-						+ potionEffect.getType().getName() + " for "
-						+ (potionEffect.getDuration() / TICKS_PER_MINUTE)
-						+ " minutes" + " from " + ChatColor.GOLD
-						+ getPlayer().getName(), player);
-				player.addPotionEffect(potionEffect, true);
-			}
+			applyPotionEffect(players, potionEffect);
+		}
+	}
+
+	private void applyPotionEffect(ArrayList<Player> players,
+			PotionEffect potionEffect) {
+		for (Player player : players) {
+			sendMessage("You have recieved " + potionEffect.getType().getName()
+					+ " for " + (potionEffect.getDuration() / TICKS_PER_MINUTE)
+					+ " minutes" + " from " + ChatColor.GOLD
+					+ getPlayer().getName(), player);
+			player.addPotionEffect(potionEffect, true);
 		}
 	}
 }

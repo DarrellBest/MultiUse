@@ -19,7 +19,7 @@ import com.enjin.angelcraftonomy.MultiUseCore;
 public class CommandExtender {
 
 	private MultiUseCore multiuse;
-	private CommandSender sender;
+	protected CommandSender sender;
 	private Command command;
 	private String label;
 	private String[] args;
