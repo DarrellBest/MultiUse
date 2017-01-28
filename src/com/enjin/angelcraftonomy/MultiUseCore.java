@@ -40,10 +40,3 @@ public class MultiUseCore extends JavaPlugin {
 	}
 
 }
-
-/*
- * 
- * Killing a hologram:
- * 
- * /minecraft:kill @e[type=ArmorStand,r=3]
- */
