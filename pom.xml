@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>MultiUse</name>
   <description>MultiUse allows for a variety of console commands to be used in game. Made by Darrell Best</description>
-  <build>
+  <build> 
     <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
@@ -23,21 +23,21 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
- </repositories>
-  <dependencies>
-  	<!--Spigot API-->
+  </repositories>
+<dependencies>
+    <!--Spigot API-->
     <dependency>
            <groupId>org.spigotmc</groupId>
            <artifactId>spigot-api</artifactId>
-           <version>1.10.2-R0.1-SNAPSHOT</version>
+           <version>1.11.2-R0.1-SNAPSHOT</version>
            <scope>provided</scope>
     </dependency>
     <!--Bukkit API-->
     <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.10.2-R0.1-SNAPSHOT</version>
+            <version>1.11.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
     </dependency>
-  </dependencies>
+</dependencies>
 </project>
