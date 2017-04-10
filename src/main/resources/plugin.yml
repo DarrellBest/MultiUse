@@ -1,0 +1,9 @@
+name: MultiUse
+main: com.enjin.angelcraftonomy.MultiUseCore
+version: 1.0
+author: UsuriousAngel
+website: http://www.angelcraftonomy.com
+commands: 
+  multiuse:
+    description: core command for multiuse
+    aliases: [mu]

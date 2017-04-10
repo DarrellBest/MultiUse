@@ -7,16 +7,16 @@
   <description>MultiUse allows for a variety of console commands to be used in game. Made by Darrell Best</description>
   <build> 
     <sourceDirectory>src</sourceDirectory>
-    <plugins>
-      <plugin>
+  <plugins>
+    <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.5.1</version>
         <configuration>
           <source>1.7</source>
           <target>1.7</target>
         </configuration>
-      </plugin>
-    </plugins>
+    </plugin>
+  </plugins>
   </build>
   <repositories>
         <repository>
@@ -24,7 +24,7 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
   </repositories>
-<dependencies>
+  <dependencies>
     <!--Spigot API-->
     <dependency>
            <groupId>org.spigotmc</groupId>
@@ -39,5 +39,5 @@
             <version>1.11.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
     </dependency>
-</dependencies>
+  </dependencies>
 </project>
