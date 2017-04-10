@@ -3,15 +3,15 @@ package com.enjin.angelcraftonomy.extenders;
 import java.util.ArrayList;
 import java.util.Random;
 
-import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.enjin.angelcraftonomy.MultiUseCore;
+
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 
 // To be extended!
 
@@ -42,7 +42,7 @@ public class CommandExtender {
 	protected void sendNoPermMessage() {
 		// ChatComponent
 		Player player = getPlayer();
-		ArrayList<String> messages = new ArrayList<String>();
+		ArrayList<String> messages = new ArrayList<>();
 		player.sendMessage(ChatColor.GREEN + "[MultiUse] " + ChatColor.YELLOW
 				+ "You do not have permission to use this command.");
 	}
@@ -52,18 +52,16 @@ public class CommandExtender {
 		Player player = getPlayer();
 		ChatColor colorOne = ChatColor.GREEN;
 		ChatColor colorTwo = ChatColor.YELLOW;
-		player.spigot().sendMessage(
-				new ComponentBuilder("[MultiUse] ").color(colorOne)
-						.append(message).color(colorTwo).create());
+		player.spigot().sendMessage(new ComponentBuilder("[MultiUse] ")
+				.color(colorOne).append(message).color(colorTwo).create());
 	}
 
 	// send player a message
 	protected void sendMessage(String message, Player p) {
 		ChatColor colorOne = ChatColor.GREEN;
 		ChatColor colorTwo = ChatColor.YELLOW;
-		p.spigot().sendMessage(
-				new ComponentBuilder("[MultiUse] ").color(colorOne)
-						.append(message).color(colorTwo).create());
+		p.spigot().sendMessage(new ComponentBuilder("[MultiUse] ")
+				.color(colorOne).append(message).color(colorTwo).create());
 	}
 
 	protected void sendMessage(ArrayList<String> messages) {
@@ -71,16 +69,15 @@ public class CommandExtender {
 		ChatColor colorOne = getRandomColor();
 		ChatColor colorTwo = getRandomColor();
 		for (String message : messages) {
-			player.spigot().sendMessage(
-					new ComponentBuilder(" ").color(colorOne).append(message)
-							.color(colorTwo).create());
+			player.spigot().sendMessage(new ComponentBuilder(" ")
+					.color(colorOne).append(message).color(colorTwo).create());
 		}
 	}
 
 	// returns a random color code
 	protected ChatColor getRandomColor() {
 		ChatColor retVal;
-		ArrayList<ChatColor> colors = new ArrayList<ChatColor>();
+		ArrayList<ChatColor> colors = new ArrayList<>();
 		colors.add(ChatColor.AQUA);
 		colors.add(ChatColor.BLUE);
 		colors.add(ChatColor.GOLD);
@@ -98,7 +95,7 @@ public class CommandExtender {
 
 	// get a list of online players
 	protected ArrayList<Player> getOnlinePlayers() {
-		ArrayList<Player> players = new ArrayList<Player>(
+		ArrayList<Player> players = new ArrayList<>(
 				Bukkit.getOnlinePlayers());
 		return players;
 	}

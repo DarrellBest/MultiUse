@@ -33,7 +33,7 @@ permissions:
       description: Generates a maze
    multiuse.command.aution:
       description: launches a firework in a peewee herman word of the day sort of way.
-   multiuse.*:
+   multiuse.all:
       description: Gives access to all MultiUse commands/functions.
       children:
          multiuse.canswear: true
