@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>MultiUse</groupId>
   <artifactId>MultiUse</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0-SNAPSHOT</version>
   <name>MultiUse</name>
   <description>MultiUse allows for a variety of console commands to be used in game. Made by Darrell Best</description>
   <build> 
@@ -25,11 +25,19 @@
         </repository>
   </repositories>
   <dependencies>
-    <!--Spigot API-->
+    <!--Old Spigot API
     <dependency>
            <groupId>org.spigotmc</groupId>
            <artifactId>spigot-api</artifactId>
            <version>1.11.2-R0.1-SNAPSHOT</version>
+           <scope>provided</scope>
+    </dependency>
+    -->
+    <!--New Spigot API-->
+    <dependency>
+           <groupId>org.spigotmc</groupId>
+           <artifactId>spigot-api</artifactId>
+           <version>1.12.2-R0.1-SNAPSHOT</version>
            <scope>provided</scope>
     </dependency>
     <!--Bukkit API-->
@@ -40,4 +48,5 @@
             <scope>provided</scope>
     </dependency>
   </dependencies>
+  <url>https://github.com/DarrellBest/MultiUse</url>
 </project>

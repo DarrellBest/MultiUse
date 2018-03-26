@@ -1,6 +1,6 @@
 "MultiUse" Plugin created and designed by Darrell Best. Contributions by Steven Nix.
 
-Clone from GitHub using Eclipse.
+Clone from GitHub using Eclipse. Make sure to check import existing project.
 
 Make sure you have the JDK installed. Maven will not build on the JRE.
 
